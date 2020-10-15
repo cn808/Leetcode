@@ -1,9 +1,6 @@
 package Leetcode;
-
-import java.util.Stack;
-
 /**
- * MaxSubArray
+ * IsPalindrome
  */
 public class IsPalindrome {
 /*
@@ -21,8 +18,8 @@ public class IsPalindrome {
         int end = s.length() - 1;
 
         while(begin < end) {
-            while(begin < end && !isChar(charArray[begin])) begin++;
-            while(begin < end && !isChar(charArray[end])) end--;
+            while(begin < end && !isAlphaNumeric(charArray[begin])) begin++;
+            while(begin < end && !isAlphaNumeric(charArray[end])) end--;
             if(charArray[begin] != charArray[end]) return false;
             begin++;
             end--;
@@ -31,20 +28,21 @@ public class IsPalindrome {
         return true;
     }
 
-    private static boolean isChar(char c) {
-        if(c - 'a' >= 0 && c - 'z' <= 26) return true;
+    private static boolean isAlphaNumeric(char c) {
+        if(c - 'a' >= 0 && c - 'a' < 26) return true;
         if(c - '0' >= 0 && c - '0' <= 9) return true;
         return false;
     }
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome("A man, a plan, a canal: Panama")); // should true
-        System.out.println(isPalindrome("race car")); // should true
-        System.out.println(isPalindrome("")); // should true
-        System.out.println(isPalindrome("aab")); // should false
-        System.out.println(isPalindrome("abc")); // should false
-        System.out.println(isPalindrome("asdasjdlajsd")); // should false
-        System.out.println(isPalindrome("0P")); // should false
-        System.out.println(isPalindrome(",.")); // should true
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama")); // should return true
+        System.out.println(isPalindrome("race car")); // should return true
+        System.out.println(isPalindrome("")); // should return true
+        System.out.println(isPalindrome("aab")); // should return false
+        System.out.println(isPalindrome("abc")); // should return false
+        System.out.println(isPalindrome("asdasjdlajsd")); // should return false
+        System.out.println(isPalindrome("0P")); // should return false
+        System.out.println(isPalindrome(",.")); // should return true
+        System.out.println(isPalindrome("Marge, let's \"[went].\" I await {news} telegram.")); // should return true
     }
 }
